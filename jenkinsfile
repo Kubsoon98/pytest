@@ -8,9 +8,12 @@ pipeline {
             }
         }
     stage('Build') {
-        agent {
-            image docker:'faucet/python3'
-        }
+        agent{
+                docker {
+                    image 'faucet/python3'
+                    reuseNode true
+                }
+            }
             steps {
                 sh 'python3 ops.py'
             }
