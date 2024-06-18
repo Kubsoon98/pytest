@@ -10,12 +10,17 @@ pipeline {
     stage('Build') {
         agent{
                 docker {
-                    image 'faucet/python3'
+                    image 'python3'
                     reuseNode true
                 }
             }
             steps {
-                sh 'python3 ops.py'
+                sh 'python3 ops.py' 
+            }
+        }
+    stage('Test') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Kubsoon98/pytest.git']]) // skonczylem na tescie 
             }
         }
     }
