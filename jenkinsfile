@@ -23,11 +23,12 @@ pipeline {
     stage('Test') {
         agent{
                 docker {
-                    image 'faucet/python3'
+                    image 'python:3.10.14-alpine3.20'
                     reuseNode true
                 }
             }
             steps {
+                sh 'ls -la'
                 sh 'python3 test_ops.py' 
             }
         
