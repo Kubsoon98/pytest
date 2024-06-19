@@ -16,18 +16,5 @@ pipeline {
                 sh 'python3 ops.py' 
             }
         }
-    /* 
-    stage('Test') {
-        agent{
-                docker {
-                    image 'faucet/python3'
-                    reuseNode true
-                }
-            }
-            steps {
-                sh 'python3 test_ops.py' 
-            }
-        
-        }
-    }*/
+    }   
 }
