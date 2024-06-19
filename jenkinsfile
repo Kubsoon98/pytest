@@ -28,7 +28,6 @@ pipeline {
                 }
             }
             steps {
-                sh 'ls -la'
                 sh 'python3 test_ops.py' 
             }
         
