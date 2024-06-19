@@ -8,13 +8,29 @@ pipeline {
             }
         }
     stage('Build') {
+        agent{
+                docker {
+                    image 'faucet/python3'
+                    reuseNode true
+                }
+            }
             steps {
-                sh '''
-                    sudo apt-get update
-                    sudo apt-get install python3
-                '''
+                sh 'apt-get update'
                 sh 'python3 ops.py' 
             }
         }
-    }   
+     
+    stage('Test') {
+        agent{
+                docker {
+                    image 'faucet/python3'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh 'python3 test_ops.py' 
+            }
+        
+        }
+    }
 }
