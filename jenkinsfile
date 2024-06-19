@@ -15,7 +15,6 @@ pipeline {
                 }
             }
             steps {
-                sh 'apt-get update'
                 sh 'python3 ops.py' 
             }
         }
