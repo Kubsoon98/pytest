@@ -8,16 +8,15 @@ pipeline {
             }
         }
     stage('Build') {
-        agent{
-                docker {
-                    image 'faucet/python3'
-                    reuseNode true
-                }
-            }
             steps {
+                sh '''
+                    apt-get update
+                    apt-get install python3
+                '''
                 sh 'python3 ops.py' 
             }
         }
+    /* 
     stage('Test') {
         agent{
                 docker {
@@ -32,3 +31,4 @@ pipeline {
         }
     }
 }
+*/
