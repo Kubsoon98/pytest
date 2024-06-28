@@ -24,5 +24,11 @@ pipeline {
                 sh 'python3 test_ops.py' 
             }
         }
+    /*
+    stage('SonarqubeScan') {
+            steps {
+                sh '' 
+            }
+        }*/
     }
 }
